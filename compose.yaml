@@ -1,4 +1,4 @@
-name: app
+name: lakehouse
 
 networks:
   wba-network:
@@ -34,20 +34,12 @@ services:
     ports:
         - "8088:8088"
     volumes:
-      - ./superset-data:/data
+      - ./duckdb-data:/data
     command: bash -c 
       "superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@superset.com --password admin &&
        superset db upgrade &&
        superset init &&
-       superset set_database_uri -d DuckDB-memory -u 'duckdb:///:memory:' &&
+       superset set_database_uri -d DuckDB -u 'duckdb:///data/duck.db' &&
        /usr/bin/run-server.sh"
     networks:
       - wba-network
-
-
-
-  # Lakehouse
-  #lakehouse:
-  #  hostname: lakehouse
-  #  container_name: lakehouse
-  #  image: lakehouse:latest

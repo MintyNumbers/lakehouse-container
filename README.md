@@ -1,8 +1,8 @@
-# Lakehouse Container with FOSS
+# Lakehouse Container with FOSS (MinIO, Deltalake, DuckDB and Superset)
 Example implementation of a lakehouse container.
 
 ## Description
-TODO
+Project with MinIO and Superset containers in the same network. Superset is connected to a DuckDB instance to query parquet files in MinIO Deltalake tables (Lakehouse architecture).
 
 ## Get Started
 TODO
@@ -15,7 +15,7 @@ Python 3 with libraries listed in `requirements.txt`. You can create a virtual e
 project directory:
 
 ```bash
-# Unix, macOS
+# Linux, Unix
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install --upgrade pip
@@ -30,7 +30,7 @@ py -m pip --version
 Then you can install the libraries:
 
 ```bash
-# Unix, macOS
+# Linux, Unix
 python3 -m pip install -r requirements.txt
 # OR: Windows
 py -m pip install -r requirements.txt
@@ -69,6 +69,12 @@ podman-compose up
 docker compose up
 ```
 
+Now you can execute the main function to populate the MinIO storage with data that we want to visualize:
+
+```bash
+python src/main.py
+```
+
 To log into Apache Superset at http://127.0.0.1:8088 you can use the default credentials: admin/admin
 
 
@@ -85,4 +91,4 @@ TODO
 
 [4] https://jorritsandbrink.substack.com/p/open-source-data-viz-with-superset
 
-[5]
+[5] https://github.com/delta-io/delta-rs
