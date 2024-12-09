@@ -16,7 +16,7 @@ def main():
     populate_minio_storage(
         minio_client=minio_client,
         storage_options=storage_options,
-        bucket_name="data-bucket",
+        bucket_name="delta-bucket",
         table_name="delta-table-3",
         csv_filepath="data/shopping_trends.csv",
     )
@@ -44,7 +44,7 @@ def main():
     create_superset_chart(
         headers=HEADERS,
         superset_api_url=superset_api_url,
-        params_file="superset-params/create-chart.json",
+        params_file="superset-chart-params/create-chart.json",
         table_name="my_table",  # has to be the same as table_name="my_table"
         chart_name="my_chart",
     )
