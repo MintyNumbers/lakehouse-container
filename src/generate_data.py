@@ -11,13 +11,14 @@ def populate_minio_storage(
     table_name: str,
     csv_filepath: str,
 ):
-    table_uri = f"s3a://{bucket_name}/{table_name}"
+    """Populate the MinIO storage in specified delta table in specified bucket with data using a given CSV file."""
 
     # Create new bucket
     if not minio_client.bucket_exists(bucket_name):
         minio_client.make_bucket(bucket_name)
 
     # Read CSV file with data and write to deltalake
+    table_uri = f"s3a://{bucket_name}/{table_name}"
     data: DataFrame = read_csv(csv_filepath).df()
     write_deltalake(
         table_or_uri=table_uri,
@@ -37,6 +38,8 @@ def create_duckdb_table_from_minio(
     delta_table_name: str,
     duckdb_table_name: str,
 ):
+    """Creates table in persistent DuckDB instance using data from specified delta table from specific MinIO bucket."""
+
     # Query Deltalake table in MinIO bucket
     my_df: DataFrame = DeltaTable(  # noqa: F841
         table_uri=f"s3a://{minio_bucket_name}/{delta_table_name}",

@@ -12,9 +12,10 @@ def _read_json_params_file(file: str) -> str:
 def create_superset_dataset(
     headers: dict[str, str],
     superset_api_url: str,
-    # params_file: str,
     table_name: str,
 ):
+    """Create Superset dataset from specified DuckDB table."""
+
     request_body = {
         "always_filter_main_dttm": "false",
         "database": 1,
@@ -39,6 +40,8 @@ def create_superset_chart(
     table_name: str,
     chart_name: str,
 ):
+    """Create Superset chart from specified Superset dataset."""
+
     request_body = {
         "dashboards": [],
         "datasource_id": 1,
