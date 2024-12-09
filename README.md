@@ -4,8 +4,9 @@ Example implementation of a lakehouse container.
 ## Description
 Project with MinIO and Superset containers in the same network. Superset is connected to a DuckDB instance to query parquet files in MinIO Deltalake tables (Lakehouse architecture).
 
+
+
 ## Get Started
-TODO
 
 ### Dependencies
 
@@ -54,6 +55,7 @@ You can download the repository using `git clone`:
 git clone git@github.com:MintyNumbers/lakehouse-container.git
 ```
 
+
 ### Executing program
 
 #### Dataset
@@ -94,7 +96,7 @@ python src/main.py
 ```
 
 #### View the visualizations
-To log into Apache Superset at http://127.0.0.1:8088 you can use the default credentials: admin/admin
+To log into Apache Superset at http://127.0.0.1:8088 you can use the default credentials: admin/admin. Similarly, the MinIO storage can be accessed at http://0.0.0.0:9001/ using accesskey/secretkey.
 
 
 
@@ -111,3 +113,5 @@ To log into Apache Superset at http://127.0.0.1:8088 you can use the default cre
 [5] https://github.com/delta-io/delta-rs
 
 [6] https://duckdb.org/docs/guides/python/import_pandas.html
+
+[7] https://superset.apache.org/docs/api/ or interactively (locally): http://127.0.0.1:8088/swagger/v1
