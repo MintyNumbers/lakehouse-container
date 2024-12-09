@@ -164,3 +164,4 @@ cython_debug/
 data/
 minio-data/
 duckdb-data/
+superset-data

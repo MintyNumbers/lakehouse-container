@@ -1,5 +1,5 @@
 from deltalake import DeltaTable, write_deltalake
-from duckdb import read_csv
+from duckdb import DuckDBPyConnection, read_csv, sql
 from minio import Minio
 from pandas import DataFrame
 
@@ -28,3 +28,22 @@ def populate_minio_storage(
     # Print data from deltalake
     dt = DeltaTable(table_uri, storage_options=storage_options)
     print(dt.to_pandas())
+
+
+def create_duckdb_table_from_minio(
+    minio_bucket_name: str,
+    storage_options: dict[str, str],
+    con: DuckDBPyConnection,
+    delta_table_name: str,
+    duckdb_table_name: str,
+):
+    # Query Deltalake table in MinIO bucket
+    my_df: DataFrame = DeltaTable(  # noqa: F841
+        table_uri=f"s3a://{minio_bucket_name}/{delta_table_name}",
+        storage_options=storage_options,
+    ).to_pandas()
+
+    # Write queried data to persistent DuckDB storage connected to Superset
+    sql(f"CREATE TABLE {duckdb_table_name} AS SELECT * FROM my_df", connection=con)
+    sql(f"INSERT INTO {duckdb_table_name} SELECT * FROM my_df", connection=con)
+    sql(f"SELECT * FROM {duckdb_table_name}", connection=con).show()

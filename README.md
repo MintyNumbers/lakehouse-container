@@ -49,7 +49,16 @@ git clone https://github.com/MintyNumbers/lakehouse-container.git
 
 ### Executing program
 
-First you will need to build the Apache Superset image:
+#### Dataset
+First you need to download the Customer Shopping dataset that we want to store and visualize from Kaggle:
+
+https://www.kaggle.com/datasets/bhadramohit/customer-shopping-latest-trends-dataset
+
+Download and unzip this file to the `data` directory in the project folder.
+
+#### MinIO and Superset containers
+
+Then, we build the Apache Superset image:
 
 ```bash
 # Podman
@@ -69,16 +78,17 @@ podman-compose up
 docker compose up
 ```
 
+#### Populating the storage with the downloaded dataset and visualizing it
+
 Now you can execute the main function to populate the MinIO storage with data that we want to visualize:
 
 ```bash
 python src/main.py
 ```
 
+#### View the visualizations
 To log into Apache Superset at http://127.0.0.1:8088 you can use the default credentials: admin/admin
 
-
-TODO
 
 
 ## Sources
@@ -92,3 +102,5 @@ TODO
 [4] https://jorritsandbrink.substack.com/p/open-source-data-viz-with-superset
 
 [5] https://github.com/delta-io/delta-rs
+
+[6] https://duckdb.org/docs/guides/python/import_pandas.html
