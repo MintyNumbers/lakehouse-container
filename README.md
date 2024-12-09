@@ -36,6 +36,13 @@ python3 -m pip install -r requirements.txt
 py -m pip install -r requirements.txt
 ```
 
+Alternatively you can also use Anaconda:
+
+```bash
+conda create -n example minio==7.1.0 python-duckdb==1.1.3 conda-forge::deltalake==0.18.2 pandas==2.0.3 requests==2.32.3 python==3.11.10
+conda activate example
+```
+
 You will also need Docker or Podman-Compose to execute `docker-compose.yml`.
 
 
@@ -44,7 +51,7 @@ The program's code is found at: https://github.com/MintyNumbers/lakehouse-contai
 You can download the repository using `git clone`:
 
 ```bash
-git clone https://github.com/MintyNumbers/lakehouse-container.git
+git clone git@github.com:MintyNumbers/lakehouse-container.git
 ```
 
 ### Executing program

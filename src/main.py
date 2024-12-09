@@ -1,4 +1,4 @@
-from generate_data import create_duckdb_table_from_minio, populate_minio_storage
+from import_data import create_duckdb_table_from_minio, populate_minio_storage
 from init_connections import (
     create_deltalake_storage_options,
     create_duckdb_connection,
