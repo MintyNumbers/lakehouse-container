@@ -40,9 +40,11 @@ py -m pip install -r requirements.txt
 Alternatively you can also use Anaconda:
 
 ```bash
-conda create -n example minio==7.1.0 python-duckdb==1.1.3 conda-forge::deltalake==0.18.2 pandas==2.0.3 requests==2.32.3 python==3.11.10
+conda create -n example minio==7.1.0 python-duckdb==1.1.3 conda-forge::deltalake==0.18.2 pandas==2.2.3 requests==2.32.3 python==3.11.10
 conda activate example
 ```
+
+Note: The listed library version work with Python version 3.11.10 (tested with Anaconda) and Python version 3.13.0 (tested with venv).
 
 You will also need Docker or Podman-Compose to execute `docker-compose.yml`.
 
@@ -96,7 +98,7 @@ python src/main.py
 ```
 
 #### View the visualizations
-To log into Apache Superset at http://127.0.0.1:8088 you can use the default credentials: admin/admin. Similarly, the MinIO storage can be accessed at http://0.0.0.0:9001/ using accesskey/secretkey.
+To log into Apache Superset at http://0.0.0.0:8088 you can use the default credentials: admin/admin. Similarly, the MinIO storage can be accessed at http://0.0.0.0:9001/ using accesskey/secretkey.
 
 
 
@@ -114,4 +116,4 @@ To log into Apache Superset at http://127.0.0.1:8088 you can use the default cre
 
 [6] https://duckdb.org/docs/guides/python/import_pandas.html
 
-[7] https://superset.apache.org/docs/api/ or interactively (locally): http://127.0.0.1:8088/swagger/v1
+[7] https://superset.apache.org/docs/api/ or interactively (locally): http://0.0.0.0:8088/swagger/v1
